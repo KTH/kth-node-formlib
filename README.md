@@ -24,6 +24,77 @@ createUtility({
 }).registerWith(registry)
 ```
 
+## Browser Javascript ##
+
+In order for HTML-editor and list fields to work properly you need to add two javascript files to your
+browser code. If you want to create custom behaviour or use other libraries, just take a look at the 
+included files and implement your own solution.
+
+### List Field ###
+Initialise to fire up the add and remove button handlers, and add drag'n'drop support using dragula.
+
+NOTE: You need to include dragula.js separately for this to work. 
+
+```
+var $ = require('jquery')
+var listField = require('kth-node-formlib/lib/browser/ListField')
+
+$(function () {
+  listField.init()
+})
+```
+
+To clean up event handlers etc. Call `listField.cleanup()`
+
+
+### HTML Area Field with CK Editor ###
+
+Initialise the ckeditor by implementing this code. The code will detect if there are HTML Area Field
+widgets on the page and 1) load ck editor on demand; 2) initialise ck editor on these <textarea>-fields.
+This code also adds a dirty check using the exposed list of ck editor instances.
+
+```
+var $ = require('jquery')
+
+var ckeditorSetup = require('kth-node-formlib/lib/browser/ckeditor')
+
+// Add the path to your ck editor root
+var ckeditorBasepath = '/static/js/ckeditor/'
+
+$(function () {
+  ckeditorSetup.init({
+    ckeditorBasepath: ckeditorBasepath,
+    ckeditorOptions: {
+      // Add your ck editor options
+    }
+  })
+
+  var doCheckDirty = function (event) {
+    // Check each instance to see if it is dirty
+    var isDirty = ckeditorSetup.ckeditorInstances.reduce(function (prev, editor) {
+      return prev || editor.checkDirty()
+    }, false)
+    if (isDirty) {
+      // try set custom message if browser supports it
+      var msg = 'Are you sure you want to discard your edits?)
+      event.returnValue = event.originalEvent.returnValue = msg
+      return msg
+    }
+  }
+  var doDisableDirtyCheck = function () {
+    // disable beforeunload if submitting form
+    $(window).off('beforeunload')
+  }
+
+  // Check if editor is dirty
+  $(window).on('beforeunload', doCheckDirty)
+
+  // Remove dirty check on submit
+  $(document).on('submit', 'form', doDisableDirtyCheck)
+})
+
+```
+
 ## Basic form rendering ##
 Rendering a form without handlebar helpers:
 
@@ -170,6 +241,5 @@ lang = 'en'
 ```
 
 DONE: Register i18n utility with component registry
-
-Get browser include to work (currently fails on babel, work around is to copy files in .../browser to project)
+TODO: Get browser include to work with dev-package (currently fails on babel, work around is to copy files in .../browser to project)
 https://github.com/babel/babel-loader/blob/master/README.md#the-node-api-for-babel-has-been-moved-to-babel-core
