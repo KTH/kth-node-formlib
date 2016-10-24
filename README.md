@@ -50,7 +50,7 @@ To clean up event handlers etc. Call `listField.cleanup()`
 ### HTML Area Field with CK Editor ###
 
 Initialise the ckeditor by implementing this code. The code will detect if there are HTML Area Field
-widgets on the page and 1) load ck editor on demand; 2) initialise ck editor on these <textarea>-fields.
+widgets on the page and 1) load ck editor on demand; 2) initialise ck editor on these `<textarea>`-fields.
 This code also adds a dirty check using the exposed list of ck editor instances.
 
 ```
