@@ -1,6 +1,6 @@
 # kth-node-formlib #
 
-Render Bootsrap 3 style forms for express.js using isomorphic-schema definitions.
+Render Bootstrap 3 style forms for Express.js using isomorphic-schema definitions.
 
 ## i18n ##
 
