@@ -11,7 +11,8 @@
     "uri": "https://gita.kth.se/infosys/kth-node-formlib"
   },
   "scripts": {
-    "test": "echo \"ok\""
+    "test": "NODE_ENV=development node_modules/mocha/bin/mocha",
+    "debugtest": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts"
   },
   "peer-dependencies": {
     "component-registry": "^0.2.1",
@@ -21,7 +22,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "mongoose": "^4.6.0"
   },
   "engines": {
     "node": "4.3.1"
