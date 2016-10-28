@@ -24,6 +24,13 @@ const nestedSchema = new Schema('Nested Schema', {
     simple: validators.objectField({schema: simpleSchema})
 })
 
+const listSchema = new Schema('List Schema', {
+    title: validators.textField({}),
+    list: validators.listField({
+        valueType: validators.textField({required: true}),
+    })
+})
+
 describe('renderForm', function () {
   it('can render a simple schema', function () {
     var outp = renderFormFields({
@@ -35,6 +42,7 @@ describe('renderForm', function () {
       formSchema: simpleSchema
     })
     expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
     const formData = $('<form>' + outp + '</form>').serializeArray()
     expect(formData[0].name).to.equal('title')
     expect(formData[0].value).to.equal('A great one')
@@ -50,6 +58,7 @@ describe('renderForm', function () {
       formSchema: nestedSchema
     })
     expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
     const formData = $('<form>' + outp + '</form>').serializeArray()
     expect(formData[3].name).to.equal('simple[happy]__exists__')
     expect(formData[3].value).to.equal('marker')
@@ -64,5 +73,41 @@ describe('renderForm', function () {
       }
     })
     expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
+  })
+
+  it('can render a schema containing a list', function () {
+    var outp = renderFormFields({
+      data: {
+          title: 'A nice title',
+          list: ['one', 'two', 'three']
+      },
+      formSchema: listSchema
+    })
+    expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
+    const formData = $('<form>' + outp + '</form>').serializeArray()
+    expect(formData[1].name).to.equal('list[0]')
+    expect(formData[1].value).to.equal('one')
+  })
+
+  it('can render a schema containing a list with IDisplayFieldWidget', function () {
+    var outp = renderFormFields({
+      data: {
+          title: 'A nice title',
+          list: ['one', 'two', 'three']
+      },
+      formSchema: listSchema,
+      renderOptions: {
+          renderWith: IDisplayFieldWidget
+      }
+    })
+    expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
+    const $html = $.load(outp)
+    expect($html.text().indexOf('A nice title')).to.equal(0)
+    expect($html.text().indexOf('one')).to.be.gt(0)
+    expect($html.text().indexOf('two')).to.be.gt(0)
+    expect($html.text().indexOf('three')).to.be.gt(0)
   })
 })
