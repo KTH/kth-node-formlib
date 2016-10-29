@@ -46,7 +46,9 @@ describe('renderForm', function () {
     const formData = $('<form>' + outp + '</form>').serializeArray()
     expect(formData[0].name).to.equal('title')
     expect(formData[0].value).to.equal('A great one')
-    expect(formData[3].name).to.equal('happy')
+    expect(formData[2].name).to.equal('happy[__bool_marker__]')
+    expect(formData[2].value).to.equal('__exists__')
+    expect(formData[3].name).to.equal('happy[__bool_value__]')
     expect(formData[3].value).to.equal('true')
   })
   
@@ -60,8 +62,8 @@ describe('renderForm', function () {
     expect(outp).not.to.equal(undefined)
     expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
     const formData = $('<form>' + outp + '</form>').serializeArray()
-    expect(formData[3].name).to.equal('simple[happy]__exists__')
-    expect(formData[3].value).to.equal('marker')
+    expect(formData[3].name).to.equal('simple[happy][__bool_marker__]')
+    expect(formData[3].value).to.equal('__exists__')
   })
 
   it('can render a nested schema with IDisplayFieldWidget', function () {
