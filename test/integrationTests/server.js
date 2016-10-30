@@ -1,5 +1,6 @@
 'use strict'
 const bodyParser = require('body-parser')
+const formidable = require('formidable')
 const urlencodedParser = bodyParser.urlencoded({
     extended: true
 })
@@ -7,15 +8,23 @@ const urlencodedParser = bodyParser.urlencoded({
 const express = require('express')
 const app = express()
 
-const { transformRequest } = require('../../lib').apiHelpers
+const { transformRequest, transformExtended } = require('../../lib').apiHelpers
 
 app.post('/urlencoded', urlencodedParser, function (req, res) {
-    console.log('-------------------')
-    console.log(req.body)
-    console.log('===================')
+    // Convert bool marker objects to bool values
     var outp = transformRequest(req.body)
-    console.log(outp)
     res.json(outp)
+})
+
+app.post('/multipart', function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        // Convert fields in same way as bodyParser.urlencoded with extended: true
+        fields = transformExtended(fields)
+        // Convert bool marker objects to bool values
+        var outp = transformRequest(fields)
+        res.json(outp)
+    })
 })
 
 
