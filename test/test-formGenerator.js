@@ -16,7 +16,8 @@ const { IDisplayFieldWidget } = require('../lib').interfaces
 const simpleSchema = new Schema('Simple Schema', {
     title: validators.textField({}),
     age: validators.integerField({}),
-    happy: validators.boolField({})
+    happy: validators.boolField({}),
+    phone: validators.telephoneField({})
 })
 
 const nestedSchema = new Schema('Nested Schema', {
@@ -37,7 +38,8 @@ describe('renderForm', function () {
       data: {
           title: 'A great one',
           age: 42,
-          happy: true
+          happy: true,
+          phone: '+46 707 70 70 70'
       },
       formSchema: simpleSchema
     })

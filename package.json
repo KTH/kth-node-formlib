@@ -1,7 +1,7 @@
 {
   "//": "JSHint configuration - http://jshint.com/docs/options/",
   "name": "kth-node-formlib",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Render Bootstrap 3 style forms for express.js using isomorphic-schema definitions",
   "main": "./lib/index.js",
   "private": true,
