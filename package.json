@@ -11,11 +11,9 @@
     "uri": "https://gita.kth.se/infosys/kth-node-formlib"
   },
   "scripts": {
-    "test": "NODE_ENV=development node_modules/mocha/bin/mocha",
+    "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./test/test-*.js ./test/**/test-*.js",
     "debug-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts",
-    "testserver": "node test/integrationTests/server.js",
-    "i-test": "NODE_ENV=development node_modules/mocha/bin/mocha test/integrationTests/mainTest.js",
-    "debug-i-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts test/integrationTests/mainTest.js"
+    "testserver": "node test/integrationTests/server.js"
   },
   "peer-dependencies": {
     "component-registry": "^0.2.1",

@@ -21,6 +21,7 @@ const $ = require('cheerio')
 const request = require('request')
 
 // Our code...
+const SERVER_PORT = 5001
 const Schema = require('isomorphic-schema').Schema
 const validators = require('isomorphic-schema').field_validators
 const { renderFormFields } = require('../../lib')
@@ -42,6 +43,18 @@ const formSchema = new Schema('List Schema', {
 })
 
 describe('urlencoded forms', function () {
+  /*
+      How to start the server from mocha tests:
+      https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+  */
+  var server;
+  before(function (done) {
+    server = require('./server')(SERVER_PORT, done);
+  });
+  after(function (done) {
+    server.close(done);
+  });
+
   it('can be submitted and parsed properly', function (done) {
     const data = {
         title: 'form title',
@@ -64,7 +77,7 @@ describe('urlencoded forms', function () {
         formData[item.name] = item.value
     })
     request.post({
-        url: 'http://localhost:5001/urlencoded',
+        url: 'http://localhost:' + SERVER_PORT + '/urlencoded',
         form: formData
     }, (err, resp, body) => {
         expect(err).to.equal(null)
@@ -77,6 +90,18 @@ describe('urlencoded forms', function () {
 })
 
 describe('multipart forms', function () {
+  /*
+    How to start the server from mocha tests:
+    https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+  */
+  var server;
+  before(function (done) {
+    server = require('./server')(SERVER_PORT, done);
+  });
+  after(function (done) {
+    server.close(done);
+  });
+
   it('can be submitted and parsed properly', function (done) {
     const data = {
         title: 'form title',
@@ -99,7 +124,7 @@ describe('multipart forms', function () {
         formData[item.name] = item.value
     })
     request.post({
-        url: 'http://localhost:5001/multipart',
+        url: 'http://localhost:' + SERVER_PORT + '/multipart',
         form: formData
     }, (err, resp, body) => {
         expect(err).to.equal(null)

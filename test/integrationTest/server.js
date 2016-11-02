@@ -42,10 +42,6 @@ app.use(function (err, req, res, next) {
     ********** /END ERROR HANDLING **********
 */
 
-var PORT = process.env.PORT || 5001;
-app.listen(PORT, function () {
-    console.log("Staring Node.js\n");    
-    console.log("Available at http://localhost:" + PORT + "/\n");    
-});
-
-module.exports = app;
+module.exports = function (PORT, done) {
+    return app.listen(PORT, done)
+}
