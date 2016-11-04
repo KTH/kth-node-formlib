@@ -122,8 +122,11 @@ const formlib = require('kth-node-formlib')
 function formPage (req, res, next) {
     const didSubmit = req.method === 'POST'
 
-    // bodyParser converts nested forms to object hierarchy
-    const formData = req.body
+    // bodyParser converts nested forms to object hierarchy but we need to
+    // convert to proper datatypes prior to validation, the last bool param
+    // tells transform to keep readOnly props which are needed if we want
+    // to display the form with errors without readOnly fields being left empty
+    const formData = formSchema.transform(req.body, undefined, true)
     
     // Validate the input
     const errors = formSchema.validate(formData)
@@ -188,8 +191,11 @@ const formlib = require('kth-node-formlib')
 function formPage (req, res, next) {
     const didSubmit = req.method === 'POST'
 
-    // bodyParser converts nested forms to object hierarchy
-    const formData = req.body
+    // bodyParser converts nested forms to object hierarchy but we need to
+    // convert to proper datatypes prior to validation, the last bool param
+    // tells transform to keep readOnly props which are needed if we want
+    // to display the form with errors without readOnly fields being left empty
+    const formData = formSchema.transform(req.body, undefined, true)
     
     // Validate the input
     const errors = formSchema.validate(formData)
