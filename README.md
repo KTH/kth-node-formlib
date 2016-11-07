@@ -8,7 +8,7 @@ If you don't implement i18n support forms will be renderedª with english labels
 app specific translations you need to create and register a ITranslationUtil
 with a single method `message(i18nlabel, lang)`. Add the following code:
 
-```
+```JavaScript
 const registry = require('component-registry').globalRegistry
 const createUtility = require('component-registry').createUtility
 const { ITranslationUtil } = require('kth-node-formlib').interfaces
@@ -35,7 +35,7 @@ Initialise to fire up the add and remove button handlers, and add drag'n'drop su
 
 NOTE: You need to include dragula.js separately for this to work. 
 
-```
+```JavaScript
 var $ = require('jquery')
 var listField = require('kth-node-formlib/lib/browser/ListField')
 
@@ -53,7 +53,7 @@ Initialise the ckeditor by implementing this code. The code will detect if there
 widgets on the page and 1) load ck editor on demand; 2) initialise ck editor on these `<textarea>`-fields.
 This code also adds a dirty check using the exposed list of ck editor instances.
 
-```
+```JavaScript
 var $ = require('jquery')
 
 var ckeditorSetup = require('kth-node-formlib/lib/browser/ckeditor')
@@ -99,7 +99,7 @@ $(function () {
 Rendering a form without handlebar helpers:
 
 **formpage.handlebars**
-```
+```Handlebars
 <html>
     <body>
         <form method="post" action="{{cancelUrl}}">
@@ -114,7 +114,7 @@ Rendering a form without handlebar helpers:
 ```
 
 **formCtrl.js**
-```
+```JavaScript
 const Schema = require('isomorphic-schema').Schema
 const formSchema = new Schema({...})
 const formlib = require('kth-node-formlib')
@@ -161,7 +161,7 @@ function formPage (req, res, next) {
 
 Add the following code to your project to register Handlebars helpers:
 
-```
+```JavaScript
 const Handlebars = require('handlebars')
 const registerFormlibHandlebarHelpers = require('kth-node-formlib').registerHandlebarHelpers
 registerFormlibHandlebarHelpers(Handlebars)
@@ -170,7 +170,7 @@ registerFormlibHandlebarHelpers(Handlebars)
 Now you will get the formlib Handlebars view helpers (described further down) allowing you to write:
 
 **formpage.handlebars**
-```
+```Handlebars
 <html>
     <body>
         <form method="post" action="{{cancelUrl}}">
@@ -183,7 +183,7 @@ Now you will get the formlib Handlebars view helpers (described further down) al
 ```
 
 **formCtrl.js**
-```
+```JavaScript
 const Schema = require('isomorphic-schema').Schema
 const formSchema = new Schema({...})
 const formlib = require('kth-node-formlib')
@@ -225,7 +225,7 @@ function formPage (req, res, next) {
 
 
 ### formfields ###
-```
+```Handlebars
 {{formfields formOptions lang}}
 
 formOptions = {
@@ -239,7 +239,7 @@ lang = 'en' // Passed to fields and used for error message rendering
 
 ### formsave ###
 Form save uses action url in form for post and `cancelUrl` when clicking cancel.
-```
+```Handlebars
 {{formsave cancelUrl lang}}
 
 cancelUrl = '/path/to/cancel'
