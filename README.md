@@ -76,7 +76,7 @@ $(function () {
     }, false)
     if (isDirty) {
       // try set custom message if browser supports it
-      var msg = 'Are you sure you want to discard your edits?)
+      var msg = 'Are you sure you want to discard your edits?'
       event.returnValue = event.originalEvent.returnValue = msg
       return msg
     }
