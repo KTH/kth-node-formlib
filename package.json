@@ -12,15 +12,16 @@
   },
   "scripts": {
     "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./test/test-*.js ./test/**/test-*.js",
-    "debug-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts",
+    "debug-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts ./test/test-*.js ./test/**/test-*.js",
     "testserver": "node test/integrationTests/server.js"
   },
   "peer-dependencies": {
+    "classnames": "^2.2.5",
     "component-registry": "^0.2.1",
-    "isomorphic-schema": "^0.2.0",
-    "striptags": "^2.1.1",
+    "es6-promise": "^4.0.5",
+    "isomorphic-schema": "^0.3.0",
     "safe-utils": "^0.1.0",
-    "classnames": "^2.2.5"
+    "striptags": "^2.1.1"
   },
   "devDependencies": {
     "body-parser": "^1.15.2",
@@ -32,13 +33,12 @@
     "mongoose": "^4.6.0",
     "request": "^2.76.0",
 
-    "component-registry": "^0.2.1",
-    "isomorphic-schema": "^0.2.0",
-    "striptags": "^2.1.1",
-    "safe-utils": "^0.1.0",
     "classnames": "^2.2.5",
-    "moment": "^2.8.4",
-    "es6-promise": "^4.0.5"
+    "component-registry": "^0.2.1",
+    "es6-promise": "^4.0.5",
+    "isomorphic-schema": "^0.3.0",
+    "safe-utils": "^0.1.0",
+    "striptags": "^2.1.1"
   },
   "engines": {
     "node": "4.3.1"
