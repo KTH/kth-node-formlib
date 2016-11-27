@@ -247,6 +247,8 @@ cancelUrl = '/path/to/cancel'
 lang = 'en'
 ```
 
+TODO: Add test for async form fields generation
+TODO: Add async form docs to README
 DONE: Register i18n utility with component registry
 TODO: Get browser include to work with dev-package (currently fails on babel, work around is to copy files in .../browser to project)
 https://github.com/babel/babel-loader/blob/master/README.md#the-node-api-for-babel-has-been-moved-to-babel-core
