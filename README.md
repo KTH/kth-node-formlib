@@ -1,4 +1,5 @@
 # kth-node-formlib #
+[![Build Status](https://travis-ci.org/KTH/kth-node-formlib.svg?branch=master)](https://travis-ci.org/KTH/kth-node-formlib)
 
 Render Bootstrap 3 style forms for Express.js using isomorphic-schema definitions.
 
