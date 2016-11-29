@@ -30,7 +30,14 @@
     "formidable": "^1.0.17",
     "mocha": "^3.1.2",
     "mongoose": "^4.6.0",
-    "request": "^2.76.0"
+    "request": "^2.76.0",
+
+    "component-registry": "^0.2.1",
+    "isomorphic-schema": "^0.2.0",
+    "striptags": "^2.1.1",
+    "safe-utils": "^0.1.0",
+    "classnames": "^2.2.5"
+
   },
   "engines": {
     "node": "4.3.1"
