@@ -36,8 +36,9 @@
     "isomorphic-schema": "^0.2.0",
     "striptags": "^2.1.1",
     "safe-utils": "^0.1.0",
-    "classnames": "^2.2.5"
-
+    "classnames": "^2.2.5",
+    "moment": "^2.8.4",
+    "es6-promise": "^4.0.5"
   },
   "engines": {
     "node": "4.3.1"
