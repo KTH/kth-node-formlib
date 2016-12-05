@@ -250,3 +250,11 @@ lang = 'en'
 DONE: Register i18n utility with component registry
 TODO: Get browser include to work with dev-package (currently fails on babel, work around is to copy files in .../browser to project)
 https://github.com/babel/babel-loader/blob/master/README.md#the-node-api-for-babel-has-been-moved-to-babel-core
+
+
+## TODO ##
+TODO: We might want to pass non i18n options that have been dynamically generated, should these be in dynamicSelectField or selectField
+"""
+innovation-web/server/forms/userFormSchema.js
+I selectblocket som börjar på rad 52 är options-texterna inte keys, utan ska bara skrivas ut som de är.
+"""

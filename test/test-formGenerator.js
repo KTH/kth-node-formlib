@@ -17,7 +17,8 @@ const simpleSchema = new Schema('Simple Schema', {
     title: validators.textField({}),
     age: validators.integerField({}),
     happy: validators.boolField({}),
-    phone: validators.telephoneField({})
+    phone: validators.telephoneField({}),
+    dateTime: validators.dateTimeField({})
 })
 
 const nestedSchema = new Schema('Nested Schema', {
@@ -39,7 +40,8 @@ describe('renderForm', function () {
           title: 'A great one',
           age: 42,
           happy: true,
-          phone: '+46 707 70 70 70'
+          phone: '+46 707 70 70 70',
+          dateTime: new Date()
       },
       formSchema: simpleSchema
     })

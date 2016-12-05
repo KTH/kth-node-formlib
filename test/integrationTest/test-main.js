@@ -31,7 +31,8 @@ const simpleSchema = new Schema('Simple Schema', {
     title: validators.textField({}),
     age: validators.integerField({}),
     happy: validators.boolField({}),
-    unhappy: validators.boolField({})
+    unhappy: validators.boolField({}),
+    dateTime: validators.dateTimeField({})
 })
 
 const formSchema = new Schema('List Schema', {
@@ -41,6 +42,8 @@ const formSchema = new Schema('List Schema', {
     }),
     simple: validators.objectField({schema: simpleSchema})
 })
+
+const nowDateTime = new Date() 
 
 describe('urlencoded forms', function () {
   /*
@@ -63,7 +66,8 @@ describe('urlencoded forms', function () {
             title: 'subtitle',
             age: 42,
             happy: true,
-            unhappy: false
+            unhappy: false,
+            dateTime: nowDateTime
         }
     }
     var outp = renderFormFields({
@@ -83,6 +87,10 @@ describe('urlencoded forms', function () {
         expect(err).to.equal(null)
         expect(resp.statusCode).to.equal(200)
         const outp = formSchema.transform(JSON.parse(body))
+        console.log("=========")
+        console.log(outp)
+        console.log("---------")
+        console.log(data)
         expect(outp).to.deep.equal(data)
         done()
     })
@@ -110,7 +118,8 @@ describe('multipart forms', function () {
             title: 'subtitle',
             age: 42,
             happy: true,
-            unhappy: false
+            unhappy: false,
+            dateTime: nowDateTime
         }
     }
     var outp = renderFormFields({
