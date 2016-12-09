@@ -70,7 +70,7 @@ var objSchema = new Schema('Simple Object', {
 
 var objUtilSchema = new Schema('Util Object', {
     title: validators.textField({ required: true }),
-    select: validators.selectField({
+    select: validators.dynamicSelectField({
         required: true,
         valueType: validators.textField({required: true}),
         options: { utilityInterface: IOptions, name: 'test'} 
@@ -79,7 +79,7 @@ var objUtilSchema = new Schema('Util Object', {
 
 var objAsyncSchema = new Schema('ASYNC Object', {
     title: validators.textField({ required: true }),
-    select: validators.selectField({
+    select: validators.dynamicSelectField({
         required: true,
         valueType: validators.textField({required: true}),
         options: { utilityInterface: IOptions, name: 'async'} 
@@ -124,6 +124,7 @@ describe('Object field', function() {
             promise.then((html) => {
                 console.log(html)
                 expect(html).not.to.equal(undefined)
+                done()
             })
         });
     });

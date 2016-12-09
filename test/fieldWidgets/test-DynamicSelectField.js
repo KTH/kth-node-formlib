@@ -25,7 +25,7 @@ createUtility({
     implements: IOptions,
     name: 'test',
     
-    getOptions: function () {
+    getOptions: function (inp, options, context) {
         return [{name: 'one', title: 'The One'}, {name: 'two', title: 'The Two'}]
     },
 
@@ -55,23 +55,45 @@ createUtility({
     }
 }).registerWith(registry)
 
-describe('Select field', function() {
-    describe('with options array', function() {
+describe('Dynamic Select field', function() {
+    describe('with options utility', function() {
         it('can be rendered', function() {        
-            var theField = validators.selectField({
+            var theField = validators.dynamicSelectField({
                 required: true,
                 valueType: validators.textField({required: true}),
-                options: [
-                    {name: "select-me", title: "Select Me"},
-                    {name: "do-not-select", title: "Don't Select Me"}
-                ]});
+                options: { utilityInterface: IOptions, name: 'test'} 
+            });
+        
             var fieldWidget = registry.getAdapter(theField, IInputFieldWidget)
             var html = fieldWidget.render()
             console.log(html)
             expect(html).not.to.equal(undefined)
             const $ = loadHtml(html)
             expect($('option').toArray().length).to.equal(2)
-            expect($('option').attr('value')).to.equal('select-me')
+            expect($('option').attr('value')).to.equal('one')
+
+        });
+        
+    });
+
+    describe('with ASYNC options utility', function() {
+        it('can be rendered', function(done) {        
+            var theField = validators.dynamicSelectField({
+                required: true,
+                valueType: validators.textField({required: true}),
+                options: { utilityInterface: IOptions, name: 'async'} 
+            });
+        
+            var fieldWidget = registry.getAdapter(theField, IInputFieldWidget)
+            fieldWidget.renderAsync()
+              .then((html) => {
+                console.log(html)
+                expect(html).not.to.equal(undefined)
+                const $ = loadHtml(html)
+                expect($('option').toArray().length).to.equal(2)
+                expect($('option').attr('value')).to.equal('one')
+                done()
+              })
         });
     });
 });

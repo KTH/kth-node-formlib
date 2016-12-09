@@ -162,7 +162,7 @@ const simpleSchemaAsync = new Schema('Simple Schema', {
     age: validators.integerField({}),
     happy: validators.boolField({}),
     phone: validators.telephoneField({}),
-    select: validators.selectField({
+    select: validators.dynamicSelectField({
       valueType: validators.textField({required: true}),
       options: { utilityInterface: IOptions, name: 'async'},
       required: true
@@ -172,7 +172,7 @@ const simpleSchemaAsync = new Schema('Simple Schema', {
 const nestedSchemaAsync = new Schema('Nested Schema', {
     title: validators.textField(),
     simple: validators.objectField({schema: simpleSchemaAsync}),
-    select: validators.selectField({
+    select: validators.dynamicSelectField({
       valueType: validators.textField({required: true}),
       options: { utilityInterface: IOptions, name: 'async'},
       required: true
