@@ -37,6 +37,7 @@
     "component-registry": "^0.2.1",
     "es6-promise": "^4.0.5",
     "isomorphic-schema": "^0.3.0",
+    "moment": "^2.8.4",
     "safe-utils": "^0.1.0",
     "striptags": "^2.1.1"
   },
