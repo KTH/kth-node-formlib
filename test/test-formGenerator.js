@@ -12,6 +12,7 @@ const Schema = require('isomorphic-schema').Schema
 const validators = require('isomorphic-schema').field_validators
 const { renderFormFields, renderFormFieldsAsync } = require('../lib')
 const { IDisplayFieldWidget } = require('../lib').interfaces
+const { myDynamicSelectAsyncField, myDynamicSelectField } = require('./fieldWidgets/test-DynamicSelectField')
 
 const simpleSchema = new Schema('Simple Schema', {
     title: validators.textField({}),
@@ -116,55 +117,12 @@ describe('renderFormFields', function () {
   })
 })
 
-var registry = require('component-registry').globalRegistry
-var createUtility = require('component-registry').createUtility
-var createInterface = require('component-registry').createInterface
-
-var IOptions = createInterface({
-    name: 'IOptions'
-})
-createUtility({
-    implements: IOptions,
-    name: 'test',
-    
-    getOptions: function () {
-        return [{name: 'one', title: 'The One'}, {name: 'two', title: 'The Two'}]
-    },
-
-    getOptionTitle: function (inp) {
-        var tmp = {
-            one: 'The One',
-            two: 'The Two'
-        }
-        return tmp[inp]
-    }
-}).registerWith(registry)
-
-createUtility({
-    implements: IOptions,
-    name: 'async',
-    
-    getOptions: function (inp, options, context) {
-        return Promise.resolve([{name: 'one', title: 'The One'}, {name: 'two', title: 'The Two'}])
-    },
-
-    getOptionTitle: function (inp, options, context) {
-        var tmp = {
-            one: 'The One',
-            two: 'The Two'
-        }
-        return Promise.resolve(tmp[inp])
-    }
-}).registerWith(registry)
-
 const simpleSchemaAsync = new Schema('Simple Schema', {
     title: validators.textField({}),
     age: validators.integerField({}),
     happy: validators.boolField({}),
     phone: validators.telephoneField({}),
-    select: validators.dynamicSelectField({
-      valueType: validators.textField({required: true}),
-      options: { utilityInterface: IOptions, name: 'async'},
+    select: myDynamicSelectAsyncField({
       required: true
     })
 })
@@ -172,9 +130,7 @@ const simpleSchemaAsync = new Schema('Simple Schema', {
 const nestedSchemaAsync = new Schema('Nested Schema', {
     title: validators.textField(),
     simple: validators.objectField({schema: simpleSchemaAsync}),
-    select: validators.dynamicSelectField({
-      valueType: validators.textField({required: true}),
-      options: { utilityInterface: IOptions, name: 'async'},
+    select: myDynamicSelectAsyncField({
       required: true
     })
 })

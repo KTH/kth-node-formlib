@@ -17,44 +17,7 @@ var Schema = require('isomorphic-schema').Schema
 var Promise = require('es6-promise')
 
 const { IInputFieldWidget } = require('../../lib/interfaces')
-
-var IOptions = createInterface({
-    name: 'IOptions'
-})
-createUtility({
-    implements: IOptions,
-    name: 'test',
-    
-    getOptions: function () {
-        return [{name: 'one', title: 'The One'}, {name: 'two', title: 'The Two'}]
-    },
-
-    getOptionTitle: function (inp) {
-        var tmp = {
-            one: 'The One',
-            two: 'The Two'
-        }
-        return tmp[inp]
-    }
-}).registerWith(registry)
-
-createUtility({
-    implements: IOptions,
-    name: 'async',
-    
-    getOptions: function (inp, options, context) {
-        return Promise.resolve([{name: 'one', title: 'The One'}, {name: 'two', title: 'The Two'}])
-    },
-
-    getOptionTitle: function (inp, options, context) {
-        var tmp = {
-            one: 'The One',
-            two: 'The Two'
-        }
-        return Promise.resolve(tmp[inp])
-    }
-}).registerWith(registry)
-
+const { myDynamicSelectAsyncField, myDynamicSelectField } = require('./test-DynamicSelectField')
 
 var objSchema = new Schema('Simple Object', {
     title: validators.textField({ required: true }),
@@ -70,19 +33,15 @@ var objSchema = new Schema('Simple Object', {
 
 var objUtilSchema = new Schema('Util Object', {
     title: validators.textField({ required: true }),
-    select: validators.dynamicSelectField({
-        required: true,
-        valueType: validators.textField({required: true}),
-        options: { utilityInterface: IOptions, name: 'test'} 
+    select: myDynamicSelectField({
+        required: true
     })
 })
 
 var objAsyncSchema = new Schema('ASYNC Object', {
     title: validators.textField({ required: true }),
-    select: validators.dynamicSelectField({
-        required: true,
-        valueType: validators.textField({required: true}),
-        options: { utilityInterface: IOptions, name: 'async'} 
+    select: myDynamicSelectAsyncField({
+        required: true 
     })
 })
 
