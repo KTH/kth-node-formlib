@@ -33,6 +33,15 @@ const listSchema = new Schema('List Schema', {
     })
 })
 
+const nestedListSchema = new Schema('Nested List Schema', {
+  list: validators.listField({
+        valueType: validators.objectField({
+          schema: listSchema,
+          required: true
+        }),
+    })
+})
+
 describe('renderFormFields', function () {
   it('can render a simple schema', function () {
     var outp = renderFormFields({
@@ -115,6 +124,25 @@ describe('renderFormFields', function () {
     expect($html.text().indexOf('two')).to.be.gt(0)
     expect($html.text().indexOf('three')).to.be.gt(0)
   })
+
+  it('can render a schema containing nested lists', function () {
+    var outp = renderFormFields({
+      data: {
+          list: [
+            { title: 'row_one', list: ['one.1', 'two.1']},
+            { title: 'row_two', list: ['one.2', 'two.2']},
+            { title: 'row_three', list: ['one.3', 'two.3']}
+          ]
+      },
+      formSchema: nestedListSchema
+    })
+    expect(outp).not.to.equal(undefined)
+    expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
+    const formData = $('<form>' + outp + '</form>').serializeArray()
+    expect(formData[0].name).to.equal('list[0][title]')
+    expect(formData[4].name).to.equal('list[1][list][0]')
+    expect(formData[4].value).to.equal('one.2')
+  })
 })
 
 const simpleSchemaAsync = new Schema('Simple Schema', {
@@ -142,8 +170,18 @@ const listSchemaAsync = new Schema('List Schema', {
     })
 })
 
+
+const nestedListSchemaAsync = new Schema('Nested List Schema', {
+  list: validators.listField({
+        valueType: validators.objectField({
+          schema: nestedSchemaAsync,
+          required: true
+        }),
+    })
+})
+
 describe('renderFormFieldsAsync', function () {
-  it('can render a simple schema', function () {
+  it('can render a simple schema', function (done) {
     var promise = renderFormFieldsAsync({
       data: {
           title: 'A great one',
@@ -163,12 +201,14 @@ describe('renderFormFieldsAsync', function () {
       expect(formData[2].value).to.equal('__exists__')
       expect(formData[3].name).to.equal('happy[__bool_value__]')
       expect(formData[3].value).to.equal('true')
+      done()
     })
   })
   
-  it('can render a nested schema', function () {
+  it('can render a nested schema', function (done) {
     var promise = renderFormFieldsAsync({
-      data: {simple: {
+      data: {
+        simple: {
           happy: false
       }},
       formSchema: nestedSchemaAsync
@@ -179,6 +219,29 @@ describe('renderFormFieldsAsync', function () {
       const formData = $('<form>' + outp + '</form>').serializeArray()
       expect(formData[3].name).to.equal('simple[happy][__bool_marker__]')
       expect(formData[3].value).to.equal('__exists__')
+      done()
+    })
+  })
+
+  it('can render a schema containing nested lists', function (done) {
+    var promise = renderFormFieldsAsync({
+      data: {
+          list: [
+            { title: 'row_one', list: ['one.1', 'two.1']},
+            { title: 'row_two', list: ['one.2', 'two.2']},
+            { title: 'row_three', list: ['one.3', 'two.3']}
+          ]
+      },
+      formSchema: nestedListSchema
+    })
+    promise.then((outp) => {
+      expect(outp).not.to.equal(undefined)
+      expect($.load(outp).text().indexOf('[object Object]')).to.equal(-1)
+      const formData = $('<form>' + outp + '</form>').serializeArray()
+      expect(formData[0].name).to.equal('list[0][title]')
+      expect(formData[4].name).to.equal('list[1][list][0]')
+      expect(formData[4].value).to.equal('one.2')
+      done()
     })
   })
 })
