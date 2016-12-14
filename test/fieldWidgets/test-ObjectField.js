@@ -55,7 +55,7 @@ describe('Object field', function() {
             })
             var widget = registry.getAdapter(theField, IInputFieldWidget)
             var html = widget.render()
-            console.log(html)
+            // console.log(html)
             expect(html).not.to.equal(undefined)
         });
         
@@ -66,7 +66,7 @@ describe('Object field', function() {
             })
             var widget = registry.getAdapter(theField, IInputFieldWidget)
             var html = widget.render()
-            console.log(html)
+            // console.log(html)
             expect(html).not.to.equal(undefined)
         });
     });
@@ -81,7 +81,7 @@ describe('Object field', function() {
             var widget = registry.getAdapter(theField, IInputFieldWidget)
             var promise = widget.renderAsync()
             promise.then((html) => {
-                console.log(html)
+                // console.log(html)
                 expect(html).not.to.equal(undefined)
                 done()
             })

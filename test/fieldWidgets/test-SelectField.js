@@ -67,7 +67,7 @@ describe('Select field', function() {
                 ]});
             var fieldWidget = registry.getAdapter(theField, IInputFieldWidget)
             var html = fieldWidget.render()
-            console.log(html)
+            // console.log(html)
             expect(html).not.to.equal(undefined)
             const $ = loadHtml(html)
             expect($('option').toArray().length).to.equal(2)

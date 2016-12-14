@@ -147,7 +147,7 @@ describe('Dynamic Select field', function() {
         
             var fieldWidget = registry.getAdapter(theField, IInputFieldWidget)
             var html = fieldWidget.render()
-            console.log(html)
+            // console.log(html)
             expect(html).not.to.equal(undefined)
             const $ = loadHtml(html)
             expect($('option').toArray().length).to.equal(3)
@@ -166,7 +166,7 @@ describe('Dynamic Select field', function() {
             var fieldWidget = registry.getAdapter(theField, IInputFieldWidget)
             fieldWidget.renderAsync()
               .then((html) => {
-                console.log(html)
+                // console.log(html)
                 expect(html).not.to.equal(undefined)
                 const $ = loadHtml(html)
                 expect($('option').toArray().length).to.equal(3)
