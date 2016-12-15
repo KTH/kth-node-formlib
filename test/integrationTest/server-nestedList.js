@@ -34,6 +34,7 @@ const nestedListSchema = new Schema('Nedsted List Schema', {
     list: validators.listField({
         label: 'MAIN LIST',
         valueType: validators.objectField({
+            label: 'Some special content',
             required: true,
             schema: formSchema
         })

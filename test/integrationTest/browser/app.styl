@@ -285,7 +285,18 @@ form input.form-control {
 }
 
 .FieldType-IListField {
-  margin-bottom: 6em;
+  margin-bottom: 0em;
+  padding-bottom: 2rem;
+
+  /* Handle nested list fields */
+  .FieldType-IListField {
+    margin-right: 10em;
+  }
+
+  .FieldType-IObjectField {
+    padding-top: 3rem;
+    padding-bottom: 0rem;
+  }
 }
 
 .modal-footer .btn {
@@ -345,7 +356,7 @@ form input.form-control {
 
   .IListField-Row .FieldType-ITextField,
   .IListField-RowTemplate .FieldType-ITextField {
-    width: 39%;
+    width: 80%;
   }
   .IListField-Row .FieldType-ISelectField,
   .IListField-RowTemplate .FieldType-ISelectField {
@@ -355,8 +366,22 @@ form input.form-control {
   .IListField-RemoveBtn {
     display: none;
   }
+  .FieldType-IListField {
+    .IListField-RemoveBtn {
+      display: inline-block;
+    }   
+  }
+
   .IListField-ActionButtonsClearfix {
     clear: both;
+  }
+
+  .IListField-Row .IListField-Container {
+      max-width: 50rem;
+  }
+
+  .IListField-Row .IListField-Row .control-label {
+      display: none;
   }
 
   /* Hide sub form error messages so it doesn't get too cluttered */

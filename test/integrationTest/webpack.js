@@ -5,6 +5,7 @@ const config = {
     // The configuration for the server-side rendering
     name: 'server',
     target: 'node',
+    devtool: 'source-map',
     entry: path.join(__dirname, './browser/source.js'),
     output: {
         path: path.join(__dirname, './browser/public'),

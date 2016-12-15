@@ -54,3 +54,4 @@ public/js/app/config*.js
 
 # Docker
 
+test/integrationTest/browser/public
