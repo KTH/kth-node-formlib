@@ -1,0 +1,300 @@
+h1 {
+  color: #006400;
+}
+body {
+  background-color: #eee;
+  padding: 2rem;
+}
+/* 
+  Add custom form styling here. Make sure you use a selector specific to that
+  form or field to avoid side effects.
+*/
+/* Bootstrap 3 doesn't handle nested forms well so adding resets here */
+.has-error .has-success .form-control {
+  border-color: #3c763d;
+}
+/* END neseted form resets */
+.control-label {
+  font-weight: 700;
+  margin-right: 1em;
+}
+.form-group.FieldType-IObjectField {
+  margin-top: 2em;
+}
+.form-group.FieldType-IObjectField > .control-label {
+  font-size: 1.2em;
+  border-bottom: 1px #aaa dotted;
+  padding-bottom: 0.3em;
+}
+.form-control-static {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 0;
+}
+form input.form-control {
+  margin: 0.5em 0;
+}
+.FieldType-IVisibilityField {
+  width: 100%;
+  max-width: 16em;
+}
+.FieldType-IHTMLAreaField .form-control {
+/* Set a sane default size for HTML fields (there is code in descriptionModule.js that inits ck editor with height from element */
+  height: 350px;
+}
+.FieldType-ISelectField .form-control-SelectFieldWrapper {
+  margin: 1em 0;
+  position: relative;
+  display: block;
+  margin-bottom: 1em;
+}
+.FieldType-ISelectField .form-control-SelectFieldWrapper .form-control {
+  margin: 0; /* Reset and move to wrapper */
+}
+.FieldType-ISelectField .form-control-SelectFieldWrapper:after {
+  content: "\e252";
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  right: 0.8rem;
+  transform: translateY(-50%);
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Style List fields */
+.IListField-ContentPlaceholderRow {
+  position: relative;
+  text-align: left;
+  margin-bottom: 0.3em;
+  color: #555;
+  padding: 1em 0;
+}
+.IListField-ContentPlaceholderRow.IListField-ContentPlaceholderRowHidden {
+  display: none;
+}
+.IListField-RowTemplate,
+.IListField-Row {
+  position: relative;
+  padding-left: 4em;
+  background-color: #fff;
+  margin-bottom: 0.3em;
+}
+.IListField-RowTemplate .help-block-isEmpty,
+.IListField-Row .help-block-isEmpty {
+  margin: 0;
+}
+.IListField-RowTemplate > .FieldType-IBaseField,
+.IListField-Row > .FieldType-IBaseField,
+.IListField-RowTemplate .form-group,
+.IListField-Row .form-group {
+  vertical-align: top;
+  margin: 0;
+}
+.IListField-RowTemplate .IListField-Row--RemoveCheckboxLabel,
+.IListField-Row .IListField-Row--RemoveCheckboxLabel {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+  font-weight: normal;
+}
+.IListField-RowTemplate .IListField-Row--RemoveCheckbox,
+.IListField-Row .IListField-Row--RemoveCheckbox {
+  margin-right: 0.5em;
+}
+.IListField-RowTemplate .FieldType-IObjectField,
+.IListField-Row .FieldType-IObjectField {
+  width: 100%;
+}
+.IListField-RowTemplate .IListField-Row--DragHandle,
+.IListField-Row .IListField-Row--DragHandle {
+  position: absolute;
+  cursor: move;
+  z-index: 10;
+  top: 50%;
+  left: 1em;
+  transform: translateY(-50%);
+  height: 2em;
+  width: 2em;
+  border-radius: 4px;
+/* TODO: These should probably be named colors: */
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.IListField-RowTemplate .IListField-Row--DragHandle:after,
+.IListField-Row .IListField-Row--DragHandle:after {
+  content: "↕";
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6em;
+  padding-bottom: 0.2em;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.IListField-RowTemplate .IListField-Row--DragHandle:hover,
+.IListField-Row .IListField-Row--DragHandle:hover {
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+/* Style the RowTemplate so it works as list header */
+.IListField-RowTemplate {
+  background: transparent;
+}
+.IListField-RowTemplate .control-label {
+  margin-left: 0.5em;
+}
+.IListField-RowTemplate .IListField-Row--DragHandle {
+  visibility: hidden;
+}
+.IListField-RowTemplate .IListField-Row--RemoveCheckboxLabel {
+  display: none;
+}
+.IListField-RowTemplate .IListField-Row--RemoveCheckbox {
+  display: none;
+}
+.IListField-RowTemplate .IListField-ActionButtons {
+  display: none;
+}
+.IListField-RowTemplate .form-control-SelectFieldWrapper,
+.IListField-RowTemplate .help-block,
+.IListField-RowTemplate .form-control,
+.IListField-RowTemplate .form-control-static {
+  height: 0;
+  min-height: 0;
+  visibility: hidden;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.IListField-RowTemplate .FieldType-IObjectField > .form-control,
+.IListField-RowTemplate .FieldType-IListField > .form-control,
+.IListField-RowTemplate .FieldType-IObjectField > .form-control-static,
+.IListField-RowTemplate .FieldType-IListField > .form-control-static {
+  height: auto;
+  visibility: visible;
+}
+/* Styling of action buttons */
+.IListField-ActionButtons {
+  margin: 0.5em;
+}
+.IListField-ActionButtons .btn {
+/* Used when toggeling visibility */
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.IListField-ActionButtons .IListField-RemoveBtn {
+  float: right;
+  text-align: right;
+  padding-right: 0;
+  color: #24a0d8;
+  width: 15em;
+}
+.IListField-ActionButtons .IListField-RemoveBtn:hover {
+  color: #23527c;
+}
+.IListField-ActionButtons .IListField-AddBtn {
+  position: relative;
+  float: left;
+  font-size: 1em;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  padding: 0.1em 1.5em 0.1em 2em;
+  line-height: 2.6em;
+}
+.IListField-ActionButtons .IListField-AddBtn:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.IListField-ActionButtons .IListField-AddBtn:visited,
+.IListField-ActionButtons .IListField-AddBtn:focus {
+  color: #fff;
+}
+.IListField-ActionButtons .IListField-AddBtn:before {
+  content: '+';
+  display: inline-block;
+  transform: translateY(-0.02em);
+  font-size: 1.9em;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  margin-left: -0.5em;
+}
+.IListField-ActionButtons .ActionBtnHidden {
+  pointer-events: none;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+}
+.FieldType-IListField {
+  margin-bottom: 6em;
+}
+.modal-footer .btn {
+  margin-left: 1em;
+}
+.modal-content .close {
+  background: transparent;
+}
+.modal-content .close:hover {
+  background: transparent;
+}
+.FieldType-IObjectField > .control-label {
+  border-bottom: 1px dotted #555;
+}
+.IListField-InlineForm .IListField-RowTemplate,
+.IListField-InlineForm .portfolioListForm {
+  display: none;
+}
+.IListField-InlineForm .IListField-Row {
+  padding: 0.5em 1em 0.5em 4em;
+}
+.IListField-InlineForm .form-group {
+  display: inline-block;
+  margin-right: 1em;
+}
+.IListField-InlineForm .FieldType-IVisibilityField {
+  color: #999;
+  font-style: italic;
+}
+.IListField-InlineForm .IListField-ActionButtons {
+  display: none;
+}
+#Test-NestedList .IListField-RowTemplate {
+  display: none;
+}
+#Test-NestedList #list[index][list] {
+  background-color: #ddd;
+  width: 20rem;
+}
+#Test-NestedList .IListField-Row .FieldType-ITextField,
+#Test-NestedList .IListField-RowTemplate .FieldType-ITextField {
+  width: 39%;
+}
+#Test-NestedList .IListField-Row .FieldType-ISelectField,
+#Test-NestedList .IListField-RowTemplate .FieldType-ISelectField {
+  width: 6em;
+}
+#Test-NestedList .IListField-RemoveBtn {
+  display: none;
+}
+#Test-NestedList .IListField-ActionButtonsClearfix {
+  clear: both;
+}
+#Test-NestedList .FieldType-IListField > .help-block,
+#Test-NestedList .FieldType-IObjectField > .help-block {
+  display: none;
+}
