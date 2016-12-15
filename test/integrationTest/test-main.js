@@ -42,6 +42,15 @@ const formSchema = new Schema('List Schema', {
     simple: validators.objectField({schema: simpleSchema})
 })
 
+const nestedListSchema = new Schema('Nedsted List Schema', {
+    list: validators.listField({
+        valueType: validators.objectField({
+            required: true,
+            schema: formSchema
+        })
+    })
+})
+
 describe('urlencoded forms', function () {
   /*
       How to start the server from mocha tests:
@@ -84,6 +93,42 @@ describe('urlencoded forms', function () {
         expect(resp.statusCode).to.equal(200)
         const outp = formSchema.transform(JSON.parse(body))
         expect(outp).to.deep.equal(data)
+        done()
+    })
+  })
+
+
+  it('can handled nested lists properly', function (done) {
+    const nestedFormData = {
+      list: [
+        { title: 'row_one', list: ['one.1', 'two.1'], simple: { age: undefined, happy: true, title: 'title', unhappy: false }},
+        { title: 'row_one', list: ['one.2', 'two.2'], simple: { age: undefined, happy: true, title: 'title', unhappy: false }},
+        { title: 'row_one', list: ['one.3', 'two.3'], simple: { age: undefined, happy: true, title: 'title', unhappy: false }},
+        { title: 'row_one', list: ['one.4', 'two.4'], simple: { age: undefined, happy: true, title: 'title', unhappy: false }}
+      ]
+    }
+
+    var outp = renderFormFields({
+      data: nestedFormData,
+      formSchema: nestedListSchema
+    })
+
+    expect(outp).not.to.equal(undefined)
+    const tmp = $('<form>' + outp + '</form>').serializeArray()
+    var formData = {}
+    tmp.forEach((item) => {
+        if (item.name.indexOf('{index}') === -1) {
+            formData[item.name] = item.value
+        }
+    })
+    request.post({
+        url: 'http://localhost:' + SERVER_PORT + '/urlencoded',
+        form: formData
+    }, (err, resp, body) => {
+        expect(err).to.equal(null)
+        expect(resp.statusCode).to.equal(200)
+        const outp = nestedListSchema.transform(JSON.parse(body))
+        expect(outp).to.deep.equal(nestedFormData)
         done()
     })
   })
