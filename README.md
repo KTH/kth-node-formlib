@@ -3,6 +3,12 @@
 
 Render Bootstrap 3 style forms for Express.js using isomorphic-schema definitions.
 
+## install ##
+
+```JavaScript
+npm install kth-node-formlib
+```
+
 ## i18n ##
 
 If you don't implement i18n support forms will be renderedª with english labels. To use your
