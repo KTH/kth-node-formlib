@@ -1,3 +1,11 @@
 language: node_js
 node_js:
-  - "6.1"
+- '6.1'
+deploy:
+  provider: npm
+  email: webmaster-private@kth.se
+  api_key:
+    secure: r57l5GddUj/gPFgRgo/a/bUpvgiTOGVr712MpQTClSeiStawQlcqRshUU4+5IQcIELJbEfR4vS/Sc9UEtZliOW1lJ8ciypmLvMNewYEWBfx1gUq6pY2/TOhlKdnQRUkiMqSSaMFTV2xeBfeTnW1gyI9yyBrWMFAbsbMcP0XzoV4ttJmrLVyHxVgMocygZuNupOWZ0d+jvwug8PqQi9VJu7ieRu+JCvTQeHj+Sg9WpyWHXpzF+RF+DNd/VynBpSuM5dEAA0YXEEd8DpHfnMeeO5O2Yfi7ZanVtgfNugY0oGn1GkfO2edRzt2bz9+itQOWRw1HW9O25J4ycXBHQd4kfV/3shvnk1IDqYIFL0B1FscofJ7a5dNqrMse+zkRPd1MqbqgQ1ZA8FjAZ+KKYT70aeKBoJuRXslt0Amqwz3Zt2aExwyRbgBN2LhVZZ6jmg4Y/gEsR1bvS+BzGRkirJrRlWq9DKFpmK25pZGRcfoQ7dhmfgfQQk0KmomlZBl7CvAqWgk7yl4ui4bdBOUNKNlm1p45J+QLiyJQA9oTlJvNVOYWr+FuQO183FZi7R7p9xEwOJP7AP6jbTFp4pwiXKhZCVQjIpmre4ySkd2WEGIMrvhJhRDpE9x0LiqzAvN/pfB7T96ACS8p+oeLBdkSRIjSZVf46fLNqmu1uZsEDT92V7A=
+  on:
+    tags: true
+    repo: KTH/kth-node-formlib
