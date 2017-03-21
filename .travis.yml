@@ -8,4 +8,4 @@ deploy:
     secure: Wsymto6A+4LvAKEPflxCKUgjmaYmFxZ+rwoI/LJgqii/5hf1unGT+CoWWj7h0HraxTLgLx+7l9G9/z+ThrY2qZK/xjBjzv9T/I3eainhHXcNG5ZI7Ln6NpNFUpvi81nyc2ehr0nIexRatr6gdYa9vVAKUf20yAFp+vjuP99s2F+U21nwPcM1/Jfzn8IS9dQl1c2BSnuqRzuG51tapUeL9txbD0KQwjAIUjdEswbtkh+TEAhOlw0c4dOKv39nCLAXVh6erRR3N4AxkWzxZzYaaySHrVC6wF58rzPIoH4pv4Ph8a19iwdkgwJ+35FWONvZmBt+wusmpH4VVWKu2YAurtNx72qsmnh6QxZmRKHiHo3FWq+nwBWTy9QyjVe9ShjaDY+BuZ9X/XmVMsodV2Xm3qi09d1rjHjR6lwSs0V284e94rPeacyXI7k85Za91hVcsL9tkEU3z9FxzS4htf+ahCN31dm3LYuCNzUZAya5iBmQNFaI8ZgfOilf3mKyd8QDFklb5XisgDfQjM/Vlw+8gq/N9Hsz5tunvL9fEnQ6B7mbbsmx3NX9SUbdFdJOg5mApN+rCF6v/Yar+17aTbKmjigqruOX+zOOu6w3IVwtkmn1YPFdu38/R6n1VXrC8dY48JUv1I25bPXwrpSfTsj2yffoHIdvJia6R53HTwY6Shk=
   on:
     repo: KTH/kth-node-formlib
-    branch: master
+    tags: true
