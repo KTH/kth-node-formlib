@@ -21,7 +21,7 @@ const $ = require('cheerio')
 const request = require('request')
 
 // Our code...
-const SERVER_PORT = 5001
+const SERVER_PORT = 6001
 const Schema = require('isomorphic-schema').Schema
 const validators = require('isomorphic-schema').field_validators
 const { renderFormFields } = require('../../lib')
