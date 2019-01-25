@@ -10,7 +10,7 @@
     "uri": "https://github.com/KTH/kth-node-formlib/"
   },
   "scripts": {
-    "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./test/test-*.js ./test/**/test-*.js",
+    "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./test/test-*.js ./test/**/test-*.js --exit",
     "debug-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts ./test/test-*.js ./test/**/test-*.js",
     "testserver": "node test/integrationTests/server.js",
     "preversion": "npm run test",
@@ -36,7 +36,7 @@
     "handlebars": "^4.0.6",
     "isomorphic-schema": "^0.4.0",
     "jquery": "^3.1.1",
-    "mocha": "^3.1.2",
+    "mocha": "^5.2.0",
     "moment": "^2.8.4",
     "mongoose": "^4.6.0",
     "nib": "^1.1.2",
