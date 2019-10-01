@@ -1,7 +1,7 @@
 {
   "//": "JSHint configuration - http://jshint.com/docs/options/",
   "name": "kth-node-formlib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Render Bootstrap 3 style forms for express.js using isomorphic-schema definitions",
   "main": "./lib/index.js",
   "license": "MIT",
@@ -9,12 +9,20 @@
     "type": "git",
     "uri": "https://github.com/KTH/kth-node-formlib/"
   },
+  "bugs": {
+    "url": "https://github.com/KTH/kth-node-formlib/issues"
+  },
+  "homepage": "https://github.com/KTH/kth-node-formlib#readme",
+  "author": {
+    "name": "KTH",
+    "email": "infosys@kth.se",
+    "url": "https://github.com/KTH"
+  },
   "scripts": {
     "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./test/test-*.js ./test/**/test-*.js --exit",
     "debug-test": "NODE_ENV=development node_modules/mocha/bin/mocha --debug-brk --no-timeouts ./test/test-*.js ./test/**/test-*.js",
-    "testserver": "node test/integrationTests/server.js",
-    "preversion": "npm run test",
-    "postversion": "git push && git push --tags"
+    "build": "./build.sh",
+    "testserver": "node test/integrationTests/server.js"
   },
   "peer-dependencies": {
     "classnames": "^2.2.5",
@@ -33,7 +41,7 @@
     "es6-promise": "^4.0.5",
     "express": "^4.14.0",
     "formidable": "^1.0.17",
-    "handlebars": "^4.0.6",
+    "handlebars": "^4.4.0",
     "isomorphic-schema": "^0.4.0",
     "jquery": "^3.1.1",
     "mocha": "^5.2.0",
