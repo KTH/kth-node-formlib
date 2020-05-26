@@ -46,7 +46,7 @@
     "jquery": "^3.4.1",
     "mocha": "^5.2.0",
     "moment": "^2.8.4",
-    "mongoose": "^4.13.19",
+    "mongoose": "^5.7.5",
     "nib": "^1.1.2",
     "request": "^2.76.0",
     "safe-utils": "^0.1.0",
