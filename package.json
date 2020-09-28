@@ -4,6 +4,7 @@
   "version": "3.0.0",
   "description": "Render Bootstrap 3 style forms for express.js using isomorphic-schema definitions",
   "main": "./lib/index.js",
+  "automaticPublish": "true",
   "license": "MIT",
   "repository": {
     "type": "git",
