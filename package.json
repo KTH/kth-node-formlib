@@ -25,38 +25,35 @@
     "build": "./build.sh",
     "testserver": "node test/integrationTest/server.js"
   },
-  "peer-dependencies": {
-    "classnames": "^2.2.5",
+  "peerDependencies": {
+    "classnames": "^2.3.1",
     "component-registry": "^0.2.1",
-    "es6-promise": "^4.0.5",
+    "es6-promise": "^4.2.8",
     "isomorphic-schema": "^0.4.0",
-    "safe-utils": "^0.1.0",
+    "safe-utils": "^1.0.1",
     "striptags": "^2.1.1"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
-    "chai": "^3.5.0",
+    "chai": "^4.3.4",
     "cheerio": "^0.22.0",
-    "classnames": "^2.2.5",
+    "classnames": "^2.3.1",
     "component-registry": "^0.2.1",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
-    "formidable": "^1.0.17",
-    "handlebars": "^4.4.2",
+    "formidable": "^1.2.2",
+    "handlebars": "^4.7.7",
     "isomorphic-schema": "^0.4.0",
-    "jquery": "^3.4.1",
-    "mocha": "^5.2.0",
-    "moment": "^2.8.4",
-    "mongoose": "^4.13.19",
+    "jquery": "^3.6.0",
+    "mocha": "^8.3.2",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.3",
     "nib": "^1.1.2",
     "request": "^2.76.0",
-    "safe-utils": "^0.1.0",
+    "safe-utils": "^1.0.1",
     "striptags": "^2.1.1",
-    "stylus": "^0.54.7",
-    "webpack": "^3.12.0"
-  },
-  "engines": {
-    "node": "8.16.1"
+    "stylus": "^0.54.8",
+    "webpack": "^5.32.0"
   },
   "jshintConfig": {
     "maxerr": 5
