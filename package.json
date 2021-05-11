@@ -45,15 +45,15 @@
     "handlebars": "^4.7.7",
     "isomorphic-schema": "^0.4.0",
     "jquery": "^3.6.0",
-    "mocha": "^8.3.2",
+    "mocha": "^8.4.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.12.8",
     "nib": "^1.1.2",
     "request": "^2.76.0",
     "safe-utils": "^1.0.1",
     "striptags": "^2.1.1",
     "stylus": "^0.54.8",
-    "webpack": "^5.32.0"
+    "webpack": "^5.37.0"
   },
   "jshintConfig": {
     "maxerr": 5
