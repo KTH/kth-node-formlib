@@ -1,4 +1,4 @@
-npm install
+npm install --legacy-peer-deps
 
 npm test
 

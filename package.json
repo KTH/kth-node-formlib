@@ -36,7 +36,7 @@
   "devDependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0-rc.10",
     "classnames": "^2.3.1",
     "component-registry": "^0.2.1",
     "es6-promise": "^4.2.8",
