@@ -1,5 +1,1 @@
-npm install --legacy-peer-deps
-
-npm test
-
-rm -rf node_modules
+npm ci --legacy-peer-deps
