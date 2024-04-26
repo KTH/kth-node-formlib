@@ -3,7 +3,6 @@
 # Sass compilation related files
 public/css/*.css
 
-
 # IDEA specific
 .idea
 *.iml
@@ -55,6 +54,3 @@ public/js/app/config*.js
 # Docker
 
 test/integrationTest/browser/public
-
-package-lock.json
-
